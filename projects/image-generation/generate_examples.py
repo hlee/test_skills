@@ -1,8 +1,19 @@
 #!/usr/bin/env python3
 from cogview4_demo_fixed import CogView4Client
 import time
+import os
+from dotenv import load_dotenv
 
-API_KEY = '403c8e79ca7c4d419e05fc6ea5bdc4f8.1ro8LTJBgspzFp2X'
+# Load environment variables from .env file
+load_dotenv()
+
+API_KEY = os.getenv("COGVIEW4_API_KEY")
+
+if not API_KEY:
+    print("Error: COGVIEW4_API_KEY not found in environment variables.")
+    print("Please set it in your .env file or as an environment variable.")
+    exit(1)
+
 client = CogView4Client(API_KEY)
 
 print('Generating additional example images...')

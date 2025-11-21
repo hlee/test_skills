@@ -11,6 +11,10 @@ import json
 import time
 import os
 from typing import Optional, Dict, Any
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 class CogView4Client:
     def __init__(self, api_key: str):
@@ -107,7 +111,12 @@ class CogView4Client:
 def main():
     """Main demo function."""
     # Your API key
-    API_KEY = "403c8e79ca7c4d419e05fc6ea5bdc4f8.1ro8LTJBgspzFp2X"
+    API_KEY = os.getenv("COGVIEW4_API_KEY")
+    
+    if not API_KEY:
+        print("Error: COGVIEW4_API_KEY not found in environment variables.")
+        print("Please set it in your .env file or as an environment variable.")
+        return
     
     # Initialize client
     client = CogView4Client(API_KEY)
@@ -171,7 +180,13 @@ def main():
 
 def test_single_image():
     """Test function to generate a single image quickly."""
-    API_KEY = "403c8e79ca7c4d419e05fc6ea5bdc4f8.1ro8LTJBgspzFp2X"
+    API_KEY = os.getenv("COGVIEW4_API_KEY")
+    
+    if not API_KEY:
+        print("Error: COGVIEW4_API_KEY not found in environment variables.")
+        print("Please set it in your .env file or as an environment variable.")
+        return
+    
     client = CogView4Client(API_KEY)
     
     print("Testing single image generation...")
@@ -192,19 +207,4 @@ def test_single_image():
     
     if "data" in result and len(result["data"]) > 0:
         image_url = result["data"][0]["url"]
-        print(f"Success! Image URL: {image_url}")
-        
-        # Download the image
-        filename = f"test_image_{int(time.time())}.png"
-        client.download_image(image_url, filename)
-    else:
-        print("No image data in response")
-
-if __name__ == "__main__":
-    # You can choose to run either the full demo or just a single test
-    import sys
-    
-    if len(sys.argv) > 1 and sys.argv[1] == "test":
-        test_single_image()
-    else:
-        main()
+        print(f"Success! Image URL:
