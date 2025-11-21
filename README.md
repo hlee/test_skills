@@ -1,104 +1,181 @@
-# CogView-4 Image Generation Demo
+# AI Skills & Experiments Workspace
 
-## Overview
-This project demonstrates how to use the CogView-4 API to generate high-quality images from text prompts. The demo includes a complete Python client with error handling, image downloading, and multiple example prompts.
+This workspace contains experimental projects and demonstrations of various AI capabilities, focusing on multi-modal content generation and processing.
 
-## Files Created
-- `cogview4_demo_fixed.py` - Main demo script with full functionality
-- `generate_examples.py` - Simple script to generate example images
-- Multiple generated PNG images as examples
+## 🗂️ Project Structure
 
-## Generated Images
-The demo successfully generated the following example images:
+```
+test_skills/
+├── projects/                    # Organized project categories
+│   ├── image-generation/        # Image generation projects
+│   ├── video-generation/        # Video generation projects  
+│   ├── audio-generation/        # Audio generation projects
+│   └── text-generation/        # Text generation projects
+├── shared/                      # Shared utilities and configurations
+│   ├── utils/                   # Common utility functions
+│   └── config/                  # Configuration management
+├── experiments/                 # Experimental work and research
+│   ├── active/                  # Current experiments
+│   ├── completed/               # Finished experiments
+│   └── archived/                # Superseded experiments
+├── src/                         # Source code for general utilities
+├── docs/                        # Documentation
+└── data/                        # Data files and datasets
+```
 
-1. **test_image_1763742465.png** - A cute kitten sitting on a sunny windowsill
-2. **example_image_1_1763742575.png** - Futuristic cityscape with flying cars and neon lights
-3. **example_image_1_1763742641.png** - Traditional Chinese landscape painting
-4. **generated_image_1_1763742499.png** - Cat on windowsill (first attempt)
-5. **generated_image_2_1763742554.png** - Futuristic cityscape
-6. **generated_image_3_1763742577.png** - Chinese landscape painting
-7. **generated_image_4_1763742601.png** - Japanese garden with cherry blossoms
+## 🚀 Current Projects
 
-## API Configuration
-- **API Key**: Successfully configured with provided key
-- **Model**: cogview-4-250304 (latest version)
-- **Image Quality**: Standard (fast generation, ~5-10 seconds)
-- **Resolution**: 1024x1024 pixels
-- **Watermark**: Enabled (as required by API policy)
+### Image Generation ✅
+- **CogView-4 Demo**: Complete Python client with API integration
+- **Features**: Multiple models, auto-download, error handling
+- **Location**: `projects/image-generation/`
 
-## Features Implemented
+### Video Generation 📋
+- **Planned**: Text-to-video, video editing, motion graphics
+- **Technologies**: Runway, Pika Labs, Stable Video Diffusion
+- **Location**: `projects/video-generation/`
 
-### CogView4Client Class
-- ✅ API authentication with Bearer token
-- ✅ Image generation with customizable parameters
-- ✅ Automatic image downloading
-- ✅ Error handling for network and API issues
-- ✅ Content filter information display
+### Audio Generation 📋
+- **Planned**: TTS, music generation, voice cloning
+- **Technologies**: OpenAI TTS, ElevenLabs, local synthesis
+- **Location**: `projects/audio-generation/`
 
-### Supported Parameters
-- `model`: cogview-4-250304, cogview-4, cogview-3-flash
-- `prompt`: Text description of desired image
-- `size`: Various resolutions (512px-2048px, divisible by 16)
-- `quality`: standard or hd (cogview-4-250304 only)
-- `watermark_enabled`: Control watermark presence
-- `user_id`: Optional user tracking
+### Text Generation 📋
+- **Planned**: LLM integration, text processing, creative writing
+- **Technologies**: OpenAI, Anthropic, local models
+- **Location**: `projects/text-generation/`
 
-### Usage Examples
+## 🛠️ Shared Components
 
-#### Quick Test
+### Utilities
+- HTTP client with retry logic
+- API key management
+- File handling and processing
+- Logging configuration
+
+### Configuration
+- Environment variable support
+- Settings management
+- Constants and enums
+
+## 🧪 Experiments
+
+### Active Focus Areas
+- Multi-modal integration
+- Performance optimization
+- New model exploration
+
+### Recent Success
+- **2024-11-21**: CogView-4 API integration completed
+
+## 📦 Getting Started
+
+### Prerequisites
+- Python 3.8+
+- Node.js (for some projects)
+- API keys for various services
+
+### Installation
 ```bash
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Install Node.js dependencies (if needed)
+npm install
+```
+
+### Environment Setup
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Add your API keys
+# Edit .env with your specific keys
+```
+
+## 📚 Usage Examples
+
+### Image Generation
+```bash
+cd projects/image-generation
 python3 cogview4_demo_fixed.py test
 ```
 
-#### Full Demo
+### Video Generation (Future)
 ```bash
-python3 cogview4_demo_fixed.py
+cd projects/video-generation
+python3 video_client.py --prompt "A sunset over mountains"
 ```
 
-#### Generate Custom Images
-```python
-from cogview4_demo_fixed import CogView4Client
+## 🔧 Development Guidelines
 
-client = CogView4Client("your_api_key")
-result = client.generate_image(
-    prompt="A beautiful sunset over mountains",
-    model="cogview-4-250304",
-    quality="hd",
-    size="1024x1024"
-)
-```
+### Project Organization
+- Each project in its own directory
+- Shared utilities in `shared/`
+- Experiments in `experiments/`
+- Documentation in each project's README
 
-## API Response Format
-```json
-{
-  "created": 1234567890,
-  "data": [
-    {
-      "url": "https://example.com/generated_image.png"
-    }
-  ],
-  "content_filter": [
-    {
-      "role": "assistant",
-      "level": 1
-    }
-  ]
-}
-```
+### Code Standards
+- Python type hints
+- Comprehensive error handling
+- Unit tests for utilities
+- Clear documentation
 
-## Requirements
-- Python 3.6+
-- requests library (`pip3 install requests`)
+### Git Workflow
+- Feature branches for new projects
+- Meaningful commit messages
+- Tag releases of working demos
+- Archive completed experiments
 
-## Notes
-- Images are temporarily hosted for 30 days
-- Rate limiting applies (10-second delays between requests)
-- Content filtering is automatically applied
-- Watermarks are enabled by default for policy compliance
+## 📊 Project Status
 
-## Success Metrics
-- ✅ All test images generated successfully
-- ✅ API integration working properly
-- ✅ Image downloading functional
-- ✅ Error handling robust
-- ✅ Multiple prompt examples tested
+| Category | Status | Progress |
+|----------|--------|----------|
+| Image Generation | ✅ Complete | CogView-4 integrated |
+| Video Generation | 📋 Planned | Research phase |
+| Audio Generation | 📋 Planned | Research phase |
+| Text Generation | 📋 Planned | Research phase |
+| Shared Utils | 🔄 In Progress | Basic structure |
+
+## 🎯 Next Steps
+
+1. **Video Generation Research**
+   - Explore available APIs
+   - Create proof-of-concept
+   - Test with sample prompts
+
+2. **Audio Generation Setup**
+   - Evaluate TTS services
+   - Implement basic client
+   - Create audio processing utils
+
+3. **Multi-modal Pipeline**
+   - Connect different modalities
+   - Create unified interface
+   - Build end-to-end examples
+
+## 📝 Recent Changes
+
+### 2024-11-21: Project Reorganization
+- Restructured into organized categories
+- Moved CogView-4 demo to dedicated folder
+- Created project templates for future work
+- Added shared utilities structure
+
+### 2024-11-21: CogView-4 Integration
+- Successfully integrated CogView-4 API
+- Generated sample images
+- Implemented error handling
+- Created comprehensive documentation
+
+## 🤝 Contributing
+
+1. Create new project in appropriate category
+2. Follow existing project structure
+3. Add comprehensive documentation
+4. Include examples and tests
+5. Update this main README
+
+## 📄 License
+
+This workspace is for experimental and educational purposes. Please respect the terms of service of any third-party APIs used.
