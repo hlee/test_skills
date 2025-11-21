@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["skills", "claude-code", "experiment"],
+  "keywords": [
+    "skills",
+    "claude-code",
+    "experiment"
+  ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@brave/brave-search-mcp-server": "^2.0.59"
+  }
 }
